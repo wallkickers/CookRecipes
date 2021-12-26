@@ -16,8 +16,8 @@ class Recipes extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unsigned();
-            $table->string('recipe_name');
-            $table->string('recipe_image')->nullable();
+            $table->string('recipe_url');
+            $table->string('recipe_ingredients_text')->nullable();
             $table->timestamps();
         });
 
@@ -38,6 +38,7 @@ class Recipes extends Migration
     {
         Schema::table('recipes', function (Blueprint $table) {
             $table->dropForeign('recipes_user_id_foreign');
+            $table->dropForeign('recipe_instructions_recipe_id_foreign');
         });
 
         Schema::dropIfExists('recipes');
