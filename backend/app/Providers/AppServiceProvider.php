@@ -13,7 +13,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            \packages\Api\Recepes\Recipe\RecipeUsecaseInterface::class,
+            \packages\Api\Recepes\Recipe\RecipeInteractor::class
+        );
+
+        $this->app->bind(
+            \packages\Api\Recepes\Recipe\RecipeRepositoryInterface::class,
+            \packages\Api\Recepes\Recipe\RecipeRepository::class
+        );
     }
 
     /**
