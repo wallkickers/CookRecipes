@@ -140,7 +140,7 @@ overflow: hidden;
 }
 
 * html .gridWrapper{height:1%;}
-	
+
 .grid{
 float:left;
 background:#fff;
@@ -329,259 +329,259 @@ font-weight:bold;
 
 
 /* PC用 */
-@media only screen and (min-width:960px){	
-	#wrapper,.inner{
-	width:940px;
-	padding:0;
-	}
-	
-	#wrapper{padding-bottom:20px;}
-	
+@media only screen and (min-width:960px){
+    #wrapper,.inner{
+    width:940px;
+    padding:0;
+    }
+
+    #wrapper{padding-bottom:20px;}
+
   nav div.panel{
-	display:block !important;
-	float:right;
-	}
+    display:block !important;
+    float:right;
+    }
 
-	a#menu{display:none;}
+    a#menu{display:none;}
 
-	nav#mainNav ul{
-	float:right;
-	overflow:hidden;
-	}
+    nav#mainNav ul{
+    float:right;
+    overflow:hidden;
+    }
 
-	* html nav#mainNav ul{height:1%;}
+    * html nav#mainNav ul{height:1%;}
 
-	nav#mainNav ul li{
-	float:left;
-	text-align:center;
-	border-right:1px solid #eee;
-	}
-	
-	nav#mainNav ul li:last-child{border:0;}
+    nav#mainNav ul li{
+    float:left;
+    text-align:center;
+    border-right:1px solid #eee;
+    }
 
-	nav#mainNav ul a{
-	font-size:13px;
-	display:block;
-	padding:30px 15px;
-	line-height:1.2;
-	color:#d75800;
-	background:#fff;
-	}
-	
-	nav#mainNav ul span{
-	font-size:10px;
-	}
+    nav#mainNav ul li:last-child{border:0;}
 
-	nav#mainNav ul li.active a,nav#mainNav ul a:hover{
-	color:#fff;
-	background:#d75800;
-	}
-	
-	/* グリッド全体 */
-	.gridWrapper{
-	width:960px;
-	margin:0 0 0 -20px;
-	}
-	
-	/* グリッド共通 ベース:トップページ4カラム */
-	.grid{
-	float:left;
-	width:220px;
-	margin-left:20px;
-	}
-	
-	/* サブコンテンツ + フッター グリッド(3カラム) */
-	#sub .grid, #footer .grid{width:298px;}
-	#footer .grid{border:0;}
+    nav#mainNav ul a{
+    font-size:13px;
+    display:block;
+    padding:30px 15px;
+    line-height:1.2;
+    color:#d75800;
+    background:#fff;
+    }
+
+    nav#mainNav ul span{
+    font-size:10px;
+    }
+
+    nav#mainNav ul li.active a,nav#mainNav ul a:hover{
+    color:#fff;
+    background:#d75800;
+    }
+
+    /* グリッド全体 */
+    .gridWrapper{
+    width:960px;
+    margin:0 0 0 -20px;
+    }
+
+    /* グリッド共通 ベース:トップページ4カラム */
+    .grid{
+    float:left;
+    width:220px;
+    margin-left:20px;
+    }
+
+    /* サブコンテンツ + フッター グリッド(3カラム) */
+    #sub .grid, #footer .grid{width:298px;}
+    #footer .grid{border:0;}
 }
 
 
 /* モニター幅940px以下 */
 @media only screen and (max-width:940px){
-	*{
+    *{
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
          -o-box-sizing: border-box;
         -ms-box-sizing: border-box;
             box-sizing: border-box;
-	}
-	
-	#header{padding:10px 0 0;}
-	
-	#header .logo,#footer .logo{
-	float:none;
-	text-align:center;
-	padding:10px 5px;
-	}
-	
-	nav#mainNav{
-	clear:both;
-	width:100%;
-	margin:0 auto;
-	padding:0;
-	background:#d75800;
-	}
+    }
 
-	nav#mainNav a.menu{
-	width:100%;
-	display:block;
-	height:40px;
-	line-height:40px;
-	font-weight: bold;
-	text-align:left;
-	color:#fff;
-	}
+    #header{padding:10px 0 0;}
 
-	nav#mainNav a#menu span{padding-left:10px;}
-	nav#mainNav a.menu span:before{content: "→ ";}
-	nav#mainNav a.menuOpen span:before{content: "↓ ";}
+    #header .logo,#footer .logo{
+    float:none;
+    text-align:center;
+    padding:10px 5px;
+    }
 
-	nav#mainNav a#menu:hover{cursor:pointer;}
+    nav#mainNav{
+    clear:both;
+    width:100%;
+    margin:0 auto;
+    padding:0;
+    background:#d75800;
+    }
 
-	nav .panel{
-	display: none;
-	width:100%;
-	position: relative;
-	right: 0;
-	top:0;
-	z-index: 1;
-	}
+    nav#mainNav a.menu{
+    width:100%;
+    display:block;
+    height:40px;
+    line-height:40px;
+    font-weight: bold;
+    text-align:left;
+    color:#fff;
+    }
 
-	nav#mainNav ul li{
-	float: none;
-	clear:both;
-	width:100%;
-	height:auto;
-	line-height:1.2;
-	}
+    nav#mainNav a#menu span{padding-left:10px;}
+    nav#mainNav a.menu span:before{content: "→ ";}
+    nav#mainNav a.menuOpen span:before{content: "↓ ";}
 
-	nav#mainNav ul li a,nav#mainNav ul li.current-menu-item li a{
-	display: block;
-	padding:15px 10px;
-	text-align:left;
-	border-bottom:1px dashed #fff;
-	color:#fff;
-	background:#fc7727;
-	}
-	
-	nav#mainNav ul li a span{padding-left:10px;}
-	
-	nav#mainNav ul li:first-child a{border-top:1px dashed #fff;}
-	
-	nav#mainNav ul li:last-child a{border:0;}
-	
-	nav#mainNav ul li.active a,nav#mainNav ul li a:hover{background:#d75800;}
+    nav#mainNav a#menu:hover{cursor:pointer;}
 
-	nav div.panel{float:none;}
-	
-	.grid{
-	float:left;
-	width:48%;
-	margin:10px 2% 0 0;
-	}
-	
-	.grid img{
-	float:left;
-	margin-right:5px;
-	}
-	
-	#gallery{padding-left:1px;}
-	
-	#gallery .grid{
-	width:23%;
-	margin:0 2% 0 0;
-	padding:0;
-	}
-	
-	#gallery .grid img{
-	float:none;
-	margin:0;
-	}
-	
-	#sub .grid{
-	width:32%;
-	margin:10px 1%;
-	}
-	
-	#sub .grid:first-child{
-	margin-left:0;
-	}
-	
-	#sub .grid:last-child{
-	margin-right:0;
-	}
-	
-	#footer .grid, #footer .grid p{
-	float:none;
-	width:100%;
-	text-align:center;
-	border:0;
-	}
-	
-	#footer .grid:last-child{padding-top:20px;}
+    nav .panel{
+    display: none;
+    width:100%;
+    position: relative;
+    right: 0;
+    top:0;
+    z-index: 1;
+    }
+
+    nav#mainNav ul li{
+    float: none;
+    clear:both;
+    width:100%;
+    height:auto;
+    line-height:1.2;
+    }
+
+    nav#mainNav ul li a,nav#mainNav ul li.current-menu-item li a{
+    display: block;
+    padding:15px 10px;
+    text-align:left;
+    border-bottom:1px dashed #fff;
+    color:#fff;
+    background:#fc7727;
+    }
+
+    nav#mainNav ul li a span{padding-left:10px;}
+
+    nav#mainNav ul li:first-child a{border-top:1px dashed #fff;}
+
+    nav#mainNav ul li:last-child a{border:0;}
+
+    nav#mainNav ul li.active a,nav#mainNav ul li a:hover{background:#d75800;}
+
+    nav div.panel{float:none;}
+
+    .grid{
+    float:left;
+    width:48%;
+    margin:10px 2% 0 0;
+    }
+
+    .grid img{
+    float:left;
+    margin-right:5px;
+    }
+
+    #gallery{padding-left:1px;}
+
+    #gallery .grid{
+    width:23%;
+    margin:0 2% 0 0;
+    padding:0;
+    }
+
+    #gallery .grid img{
+    float:none;
+    margin:0;
+    }
+
+    #sub .grid{
+    width:32%;
+    margin:10px 1%;
+    }
+
+    #sub .grid:first-child{
+    margin-left:0;
+    }
+
+    #sub .grid:last-child{
+    margin-right:0;
+    }
+
+    #footer .grid, #footer .grid p{
+    float:none;
+    width:100%;
+    text-align:center;
+    border:0;
+    }
+
+    #footer .grid:last-child{padding-top:20px;}
 }
 
 
 /* iPad 縦 */
 @media only screen and (max-width:768px){
-  #header{padding-bottom:0;}	
+  #header{padding-bottom:0;}
 
-	#header h1{text-align:center;}
-	
-	#header .logo{
-	float:none;
-	text-align:center;
-	padding:10px 5px 20px;
-	}
-	
-	#sub ul.list{padding:10px 10px 11px;}
-	
-	#sub ul.list li{
-	padding-bottom:10px;
-	margin-bottom:8px;
-	}
+    #header h1{text-align:center;}
+
+    #header .logo{
+    float:none;
+    text-align:center;
+    padding:10px 5px 20px;
+    }
+
+    #sub ul.list{padding:10px 10px 11px;}
+
+    #sub ul.list li{
+    padding-bottom:10px;
+    margin-bottom:8px;
+    }
 }
 
 
 /* スマートフォン 横(ランドスケープ) */
 @media only screen and (max-width:640px){
-	#footer .grid p{text-align:center;}
-	
-	.grid img{
-	float:none;
-	margin:0 auto;
-	}
-	
-	.grid p,#sub .grid li{text-align:left;}
+    #footer .grid p{text-align:center;}
+
+    .grid img{
+    float:none;
+    margin:0 auto;
+    }
+
+    .grid p,#sub .grid li{text-align:left;}
 
   .alignleft,.alignright{
-	float:none;
-	display:block;
-	margin:0 auto 10px;
-	}
-	
-	#sub ul.list li img{margin:0 5px 0 0;}
+    float:none;
+    display:block;
+    margin:0 auto 10px;
+    }
+
+    #sub ul.list li img{margin:0 5px 0 0;}
 }
 
 
 /* スマートフォン 縦(ポートレート) */
 @media only screen and (max-width:480px){
-	#mainBanner h2,#mainBanner h3{font-size:75%;}
-	.subImg .slogan{right:-30px;}
-	
-	.grid img{max-width:90%;height:auto;}
-	
-	#sub .grid{
-	float:none;
-	width:98%;
-	}
-	
-	#sub .grid h3{padding:10px 5px;}
-	
-	#sub ul.list{padding:10px;}
-	
-	#sub ul.list li{
-	padding-bottom:3px;
-	margin-bottom:3px;
-	}
+    #mainBanner h2,#mainBanner h3{font-size:75%;}
+    .subImg .slogan{right:-30px;}
+
+    .grid img{max-width:90%;height:auto;}
+
+    #sub .grid{
+    float:none;
+    width:98%;
+    }
+
+    #sub .grid h3{padding:10px 5px;}
+
+    #sub ul.list{padding:10px;}
+
+    #sub ul.list li{
+    padding-bottom:3px;
+    margin-bottom:3px;
+    }
 }
