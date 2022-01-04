@@ -20,3 +20,6 @@ use App\Http\Controllers\Api\RecipeController;
 // });
 
 Route::get('/recipes', [RecipeController::class, 'index']);
+
+// レシピ作成・更新
+Route::post('/recipe/createUpdate', [RecipeController::class, 'createUpdate'])->name('recipe_create_update');

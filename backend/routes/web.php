@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes');
+
+// レシピ作成・更新
+Route::get('/recipe/create', [RecipeController::class, 'create'])->name('recipe_create');
+Route::post('/recipe/create', [RecipeController::class, 'update'])->name('recipe_create_update');
