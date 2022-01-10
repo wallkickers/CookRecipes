@@ -21,7 +21,6 @@ body{
 color:#555;
 font:12px verdana,"ヒラギノ丸ゴ ProN W4","Hiragino Maru Gothic ProN","メイリオ","Meiryo","ＭＳ Ｐゴシック","MS PGothic",Sans-Serif;
 line-height:1.5;
-border-top:5px solid #d75800;
 background: #FFD540;
 -webkit-text-size-adjust: none;
 }
@@ -61,6 +60,8 @@ font-size: 2em;
 overflow:hidden;
 padding:20px 0;
 background:#fc7727;
+box-sizing: border-box;
+width: 100%;
 }
 
 * html #header{height:1%;}
@@ -707,4 +708,37 @@ font-weight:bold;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1024px;
+  height: 60px;
+  padding: 0 0.8em;
+  margin: 0 auto;
+  font-size: 1.2em;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav-item {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.logo img {
+  width: 45px;
+}
+
+.header-avatar {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  border-radius: 50%;
 }
