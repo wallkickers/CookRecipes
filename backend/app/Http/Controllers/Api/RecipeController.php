@@ -5,26 +5,49 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use packages\Api\Recepes\Recipe\RecipeInteractor;
 use packages\Api\Recepes\Recipe\RecipeRequest;
 use packages\Api\Recepes\Recipe\RecipeUsecaseInterface;
-use packages\Api\Recepes\Recipe\RecipeViewModel;
+use packages\Api\Recepes\RecipeCreate\RecipeCreateRequest;
+use packages\Api\Recepes\RecipeCreate\RecipeCreateUsecaseInterface;
 
 class RecipeController extends Controller
 {
     /**
      * @param Request $request
      * @param RecipeUsecaseInterface $recipeInteractor
-     * @return RecipeViewModel
+     * @return JsonResponse
      */
-    public function index(Request $request, RecipeInteractor $recipeInteractor)
+    public function index(Request $request, RecipeUsecaseInterface $recipeInteractor): JsonResponse
     {
-        // TODO: 開発用。リクエスト内からユーザーIDを取得するよう修正。
+        // TODO: 削除。リクエスト内からユーザーIDを取得するよう修正。
         $userId = '1';
 
         $recipeRequest = new RecipeRequest($userId);
         $recipeResponse = $recipeInteractor->handle($recipeRequest);
+
         return response()->json($recipeResponse->getRecipeCollection());
+    }
+
+    /**
+     * @param Request $request
+     * @param RecipeCreateUsecaseInterface $recipeCreateInteractor
+     * @return JsonResponse
+     */
+    public function createUpdate(Request $request, RecipeCreateUsecaseInterface $recipeCreateInteractor): JsonResponse
+    {
+        // TODO: 削除。リクエスト内からパラメータを取得するよう修正。
+        $userId = '1';
+        $recipeUrl = "https://ledner.com/voluptate-quia-dolor-dignissimos-suscipit-consectetur-occaecati.html";
+        $recipeIngredient = null;
+
+        $recipeCreateRequest = new RecipeCreateRequest(
+            $userId,
+            $recipeUrl,
+            $recipeIngredient
+        );
+        $recipeResponse = $recipeCreateInteractor->handle($recipeCreateRequest);
+        return response()->json($recipeResponse->getRecipeCreateCollection());
     }
 }
