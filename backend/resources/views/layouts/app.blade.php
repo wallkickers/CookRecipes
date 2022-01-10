@@ -10,15 +10,24 @@
         @livewireStyles
     </head>
     <body>
-        <!-- ヘッダー -->
-        <div id="header">
-            <div class="inner">
-                <div class="logo">
-                    <a href="{{ route('recipes') }}"></a>
+        <header id="header">
+            <div class="header-inner inner">
+              <div class="logo">
+                <a href="{{ route('recipes') }}"><img src="images/cookRecipeIcon.png" /></a>
+              </div>
+              <nav class="header-nav">
+                <div class="header-nav-item">
+                  {{-- <form class="form2">
+                    <input type="search" class="form2-input" placeholder="search" />
+                    <button class="form2-button"><i class="fa fa-search"></i></button>
+                  </form> --}}
                 </div>
+                {{-- <div class="header-nav-item">
+                  <img src="https://placehold.jp/50x50.png" class="header-avatar" />
+                </div> --}}
+              </nav>
             </div>
-        </div>
-        <!-- / ヘッダー -->
+          </header>
 
         @yield('content')
 
