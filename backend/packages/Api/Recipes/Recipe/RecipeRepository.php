@@ -22,11 +22,50 @@ class RecipeRepository implements RecipeRepositoryInterface
         foreach ($recipeDataCollection as $recipeData) {
             $recipe[] = new Recipe(
                 $recipeData->user_id,
-                $recipeData->recipe_url
+                $recipeData->recipe_url,
+                $recipeData->recipe_title,
             );
         }
         return collect($recipe);
     }
 
-
+    /**
+     * @param string $userId ユーザーID
+     * @param string $recipeUrl レシピURL
+     * @param string|null $recipeIngredient レシピの材料
+     * @return Collection
+     */
+    public function insertOrUpdate(
+        string $userId,
+        string $recipeUrl,
+        string|null $recipeIngredient
+    ): Collection {
+        $recipeDataCollection = DB::table('recipes')
+            ->where('user_id', $userId)
+            ->where('recipe_url', $recipeUrl)
+            ->get();
+        if (count($recipeDataCollection) > 0) {
+            // update
+            DB::table('recipes')
+                ->where('user_id', $userId)
+                ->where('recipe_url', $recipeUrl)
+                ->update(['recipe_ingredients_text' => $recipeIngredient]);
+            $recipeDataCollection = DB::table('recipes')
+                ->where('user_id', $userId)
+                ->where('recipe_url', $recipeUrl)
+                ->get();
+        } else {
+            // create
+            $id = DB::table('recipes')
+                ->insertGetId([
+                    'user_id' => $userId,
+                    'recipe_url' => $recipeUrl,
+                    'recipe_ingredients_text' => $recipeIngredient,
+                ]);
+            $recipeDataCollection = DB::table('recipes')
+                ->where(['id' => $id])
+                ->get();
+        }
+        return $recipeDataCollection;
+    }
 }

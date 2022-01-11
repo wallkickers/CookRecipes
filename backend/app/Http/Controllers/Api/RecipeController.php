@@ -39,8 +39,9 @@ class RecipeController extends Controller
     {
         // TODO: 削除。リクエスト内からパラメータを取得するよう修正。
         $userId = '1';
-        $recipeUrl = "https://ledner.com/voluptate-quia-dolor-dignissimos-suscipit-consectetur-occaecati.html";
-        $recipeIngredient = null;
+
+        $recipeUrl = $request->recipe_url;
+        $recipeIngredient = $request->recipe_ingredients;
 
         $recipeCreateRequest = new RecipeCreateRequest(
             $userId,
