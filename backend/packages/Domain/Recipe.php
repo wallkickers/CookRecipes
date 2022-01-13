@@ -9,19 +9,19 @@ class Recipe
     private int $id;
     private int $userId;
     private string $recipeUrl;
-    private string $recipeTitle;
-    private string $recipeIngredientsText;
-    private string $createdAt;
-    private string $updatedAt;
+    private string|null $recipeTitle;
+    private string|null $recipeIngredientsText;
+    private string|null $createdAt;
+    private string|null $updatedAt;
 
     public function __construct(
         int $id,
         int $userId,
         string $recipeUrl,
-        string $recipeTitle,
-        string $recipeIngredientsText,
-        string $createdAt,
-        string $updatedAt
+        string|null $recipeTitle,
+        string|null $recipeIngredientsText,
+        string|null $createdAt,
+        string|null $updatedAt
     ) {
         $this->id = $id;
         $this->userId = $userId;
@@ -32,58 +32,37 @@ class Recipe
         $this->updatedAt = $updatedAt;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return int
-     */
     public function getUserId(): int
     {
         return $this->userId;
     }
 
-    /**
-     * @return string
-     */
     public function getrecipeUrl(): string
     {
         return $this->recipeUrl;
     }
 
-    /**
-     * @return string
-     */
-    public function getrecipeTitle(): string
+    public function getrecipeTitle(): string|null
     {
         return $this->recipeTitle;
     }
 
-    /**
-     * @return string
-     */
-    public function getRecipeIngredientsText(): string
+    public function getRecipeIngredientsText(): string|null
     {
         return $this->recipeIngredientsText;
     }
 
-    /**
-     * @return string
-     */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): string|null
     {
         return $this->createdAt;
     }
 
-    /**
-     * @return string
-     */
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): string|null
     {
         return $this->updatedAt;
     }
