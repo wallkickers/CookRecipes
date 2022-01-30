@@ -13,4 +13,6 @@ interface RecipeRepositoryInterface
         string $recipeUrl,
         string|null $recipeIngredient
     );
+
+    public function getRecipe(string $userId, string $recipeId);
 }
