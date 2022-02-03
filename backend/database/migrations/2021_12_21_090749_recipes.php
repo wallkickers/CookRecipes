@@ -17,6 +17,7 @@ class Recipes extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->string('recipe_url');
+            $table->string('recipe_title')->nullable();
             $table->string('recipe_ingredients_text')->nullable();
             $table->timestamps();
         });

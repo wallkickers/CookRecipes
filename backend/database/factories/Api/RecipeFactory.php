@@ -26,6 +26,7 @@ class RecipeFactory extends Factory
     {
         return [
             'recipe_url' => $this->faker->url(),
+            'recipe_title' => $this->faker->name() . "レシピ",
         ];
     }
 }

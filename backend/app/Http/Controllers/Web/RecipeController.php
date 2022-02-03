@@ -12,6 +12,9 @@ use packages\Web\Recepes\Recipe\RecipeViewModel;
 use packages\Web\Recepes\RecipeCreate\RecipeCreateRequest;
 use packages\Web\Recepes\RecipeCreate\RecipeCreateUsecaseInterface;
 use packages\Web\Recepes\RecipeCreate\RecipeCreateViewModel;
+use packages\Web\Recepes\RecipeDetail\RecipeDetailRequest;
+use packages\Web\Recepes\RecipeDetail\RecipeDetailUsecaseInterface;
+use packages\Web\Recepes\RecipeDetail\RecipeDetailViewModel;
 
 class RecipeController extends Controller
 {
@@ -46,5 +49,21 @@ class RecipeController extends Controller
         $recipeResponse = $recipeCreateInteractor->handle($recipeCreateRequest);
         // $viewModel = new RecipeViewModel($recipeResponse->getRecipeCollection());
         // return view('recipes', compact(['viewModel']));
+    }
+
+    public function detail(Request $request, RecipeDetailUsecaseInterface $recipeDetailInteractor)
+    {
+        // TODO: ログイン中のユーザーからIDを取得する
+        $userId = '1';
+
+        // ログイン中のユーザーが見れるレシピかどうか判定はどこでする？
+
+        // TODO: リクエスト中からレシピIDを取得
+
+        $recipeId = "1";
+        $recipeDetailRequest = new recipeDetailRequest($userId, $recipeId);
+        $recipeDetailResponse = $recipeDetailInteractor->handle($recipeDetailRequest);
+        $viewModel = new RecipeDetailViewModel($recipeDetailResponse->getRecipeCollection());
+        return view('recipe_detail', compact(['viewModel']));
     }
 }
