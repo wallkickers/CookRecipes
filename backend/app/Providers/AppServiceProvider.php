@@ -29,6 +29,11 @@ class AppServiceProvider extends ServiceProvider
             \packages\Api\Recepes\RecipeCreate\RecipeCreateInteractor::class
         );
 
+        $this->app->bind(
+            \packages\Api\Recepes\RecipeDetail\RecipeDetailUsecaseInterface::class,
+            \packages\Api\Recepes\RecipeDetail\RecipeDetailInteractor::class
+        );
+
         // Web
         $this->app->bind(
             \packages\Web\Recepes\Recipe\RecipeUsecaseInterface::class,
@@ -43,6 +48,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             \packages\Web\Recepes\RecipeCreate\RecipeCreateUsecaseInterface::class,
             \packages\Web\Recepes\RecipeCreate\RecipeCreateInteractor::class
+        );
+
+        $this->app->bind(
+            \packages\Web\Recepes\RecipeDetail\RecipeDetailUsecaseInterface::class,
+            \packages\Web\Recepes\RecipeDetail\RecipeDetailInteractor::class
         );
     }
 
