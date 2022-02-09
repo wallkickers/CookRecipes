@@ -6,7 +6,7 @@ namespace packages\Web\Recepes\Recipe;
 
 use App\Http\Trait\ApiBaseTrait;
 use Illuminate\Support\Collection;
-use packages\Domain\Web\Recipe;
+use packages\Domain\Recipe;
 use packages\Web\Recepes\Recipe\RecipeRepositoryInterface;
 
 class RecipeRepository implements RecipeRepositoryInterface
@@ -23,8 +23,13 @@ class RecipeRepository implements RecipeRepositoryInterface
         $recipe = [];
         foreach ($recipeDataCollection->original as $recipeData) {
             $recipe[] = new Recipe(
+                $recipeData->getId(),
+                $recipeData->getUserId(),
                 $recipeData->getrecipeUrl(),
-                $recipeData->getrecipeTitle()
+                $recipeData->getrecipeTitle(),
+                $recipeData->getRecipeIngredientsText(),
+                $recipeData->getCreatedAt(),
+                $recipeData->getUpdatedAt()
             );
         }
         return collect($recipe);
@@ -32,21 +37,51 @@ class RecipeRepository implements RecipeRepositoryInterface
 
     /**
      * @param string $userId ユーザーID
-     * @return Collection
+     * @return Recipe
      */
     public function insertOrUpdate(
         string $userId,
         string $recipeUrl,
         string|null $recipeIngredient
-    ): Collection {
-        $params = [];
+    ): Recipe {
         $params['userId'] = $userId;
         $params['recipeUrl'] = $recipeUrl;
         $params['recipeIngredient'] = $recipeIngredient;
-        $result = $this->post(
+        $recipe = $this->post(
             '/api/recipe/createUpdate',
             $params
         );
-        dd($result);
+        return $recipe->original;
+    }
+
+    /**
+     * @param string $userId ユーザーID
+     * @param string $recipeId レシピID
+     * @return Collection
+     */
+    public function getRecipe(string $userId, string $recipeId)
+    {
+        $params = [];
+        $params['userId'] = $userId;
+
+        // TODO: APIへのGETがうまくいかないので暫定対応
+        // $recipe = $this->get(
+        //     '/api/recipe',
+        //     $params,
+        // );
+        $recipe = new Recipe(
+            14,
+            1,
+            'https://cookpad.com/recipe/3815181',
+            null,
+            '牛肉バラ肉200g
+            玉葱【中】1/2
+            にんじん25g
+            ピーマン【中】2個
+            シメジ25g',
+            null,
+            null
+        );
+        return $recipe;
     }
 }
