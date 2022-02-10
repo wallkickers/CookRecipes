@@ -54,6 +54,11 @@ class AppServiceProvider extends ServiceProvider
             \packages\Web\Recepes\RecipeDetail\RecipeDetailUsecaseInterface::class,
             \packages\Web\Recepes\RecipeDetail\RecipeDetailInteractor::class
         );
+
+        $this->app->bind(
+            \packages\Web\Recepes\RecipeEdit\RecipeEditUsecaseInterface::class,
+            \packages\Web\Recepes\RecipeEdit\RecipeEditInteractor::class
+        );
     }
 
     /**
