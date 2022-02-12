@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace packages\Web\Recepes\RecipeDetail;
 
-use Illuminate\Http\Response;
-use packages\Domain\Recipe;
 use Illuminate\Support\Collection;
+use packages\Domain\Recipe;
 
-class RecipeDetailResponse extends Response
+class RecipeDetailViewModel
 {
     private Recipe $recipeData;
 
