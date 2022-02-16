@@ -24,9 +24,9 @@
                     <button class="form2-button"><i class="fa fa-search"></i></button>
                   </form> --}}
                 </div>
-                {{-- <div class="header-nav-item">
-                  <img src="https://placehold.jp/50x50.png" class="header-avatar" />
-                </div> --}}
+                <div class="header-nav-item">
+                    <a href="{{ route('recipe_create') }}"><img src="{{ asset('images/pencilIcon.png') }}" alt="create_logo" class="header-avatar"/></a>
+                </div>
               </nav>
             </div>
           </header>
