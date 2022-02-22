@@ -5,23 +5,23 @@ declare(strict_types=1);
 namespace packages\Web\Recepes\RecipeCreate;
 
 use Illuminate\Http\Response;
-use Illuminate\Support\Collection;
+use packages\Domain\Recipe;
 
 class RecipeCreateResponse extends Response
 {
-    private Collection $RecipeCreateCollection;
+    private Recipe $recipe;
 
     public function __construct(
-        Collection $RecipeCreateCollection
+        Recipe $recipe
     ){
-        $this->RecipeCreateCollection = $RecipeCreateCollection;
+        $this->recipe = $recipe;
     }
 
     /**
-     * @return Collection
+     * @return Recipe
      */
-    public function getRecipeCreateCollection(): Collection
+    public function getRecipe(): Recipe
     {
-        return $this->RecipeCreateCollection;
+        return $this->recipe;
     }
 }
