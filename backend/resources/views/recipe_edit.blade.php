@@ -23,12 +23,12 @@
             <p class="Form-Item-Label isMsg">材料</p>
             <ol id="Ingredient-List">
                 @foreach ($viewModel->getRecipeData()->getRecipeIngredients() as $key => $recipeIngredients)
-                <li>
+                <li id="ingredientItem_{{$key}}" class="ingredientItem">
                     <div>
                         <select name="ingredient_category[]">
-                            <option>カテゴリー</option>
+                            <option value=''>カテゴリー</option>
                             @foreach($viewModel->getIngredientCategories() as $ingredientCategory)
-                            <option  id="{{ $ingredientCategory->id }}"
+                            <option  value="{{ $ingredientCategory->id }}"
                                 @if($ingredientCategory->id === $recipeIngredients->ingredient_category_id) selected @endif
                             >
                             {{ $ingredientCategory->ingredient_category_name }}
@@ -40,7 +40,7 @@
                             <input name="ingredient_amount[]" value="{{ $recipeIngredients->ingredient_amount }}" placeholder="量">
                         </span>
                     </div>
-                    <button type="button" class="Form-Btn">-</button>
+                    <button type="button" class="Form-Btn Input-Minus" data-index="{{$key}}">-</button>
                 </li>
                 @endforeach
             </ol>
