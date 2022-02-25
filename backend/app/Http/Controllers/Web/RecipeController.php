@@ -11,10 +11,15 @@ use packages\Web\Recepes\Recipe\RecipeUsecaseInterface;
 use packages\Web\Recepes\Recipe\RecipeViewModel;
 use packages\Web\Recepes\RecipeCreate\RecipeCreateRequest;
 use packages\Web\Recepes\RecipeCreate\RecipeCreateUsecaseInterface;
-use packages\Web\Recepes\RecipeCreate\RecipeCreateViewModel;
 use packages\Web\Recepes\RecipeDetail\RecipeDetailRequest;
 use packages\Web\Recepes\RecipeDetail\RecipeDetailUsecaseInterface;
 use packages\Web\Recepes\RecipeDetail\RecipeDetailViewModel;
+use packages\Web\Recepes\RecipeEdit\RecipeEditRequest;
+use packages\Web\Recepes\RecipeEdit\RecipeEditUsecaseInterface;
+use packages\Web\Recepes\RecipeEdit\RecipeEditViewModel;
+use packages\Web\Recepes\RecipeUpdate\RecipeUpdateRequest;
+use packages\Web\Recepes\RecipeUpdate\RecipeUpdateUsecaseInterface;
+use packages\Web\Recepes\RecipeUpdate\RecipeUpdateViewModel;
 
 class RecipeController extends Controller
 {
@@ -34,12 +39,30 @@ class RecipeController extends Controller
         return view('recipe_create');
     }
 
-    public function update(Request $request, RecipeCreateUsecaseInterface $recipeCreateInteractor)
+    public function edit(Request $request, RecipeEditUsecaseInterface $recipeEditInteractor)
     {
         // TODO: ログイン中のユーザーからIDを取得する
         $userId = '1';
-        $recipeUrl = "";
-        $recipeIngredient = "adfsdfsdfasdfads";
+
+        // TODO: ログイン中のユーザーが見れるレシピかどうか判定はどこでする？
+
+        $recipeId = $request->recipeId;
+        $recipeEditRequest = new recipeEditRequest($userId, $recipeId);
+        $recipeEditResponse = $recipeEditInteractor->handle($recipeEditRequest);
+        $viewModel = new RecipeEditViewModel(
+            $recipeEditResponse->getRecipeData(),
+            $recipeEditResponse->getIngredientCategories()
+        );
+        return view('recipe_edit', compact(['viewModel']));
+    }
+
+    public function insert(Request $request, RecipeCreateUsecaseInterface $recipeCreateInteractor)
+    {
+        // TODO: ログイン中のユーザーからIDを取得する
+        $userId = '1';
+
+        $recipeUrl = $request->recipe_url;
+        $recipeIngredient = $request->recipe_ingredients;
 
         $recipeCreateRequest = new RecipeCreateRequest(
             $userId,
@@ -47,8 +70,33 @@ class RecipeController extends Controller
             $recipeIngredient
         );
         $recipeResponse = $recipeCreateInteractor->handle($recipeCreateRequest);
-        // $viewModel = new RecipeViewModel($recipeResponse->getRecipeCollection());
-        // return view('recipes', compact(['viewModel']));
+        $viewModel = new RecipeDetailViewModel($recipeResponse->getRecipe());
+        return view('recipe_detail', compact(['viewModel']));
+    }
+
+    public function update(Request $request, RecipeUpdateUsecaseInterface $recipeUpdateInteractor)
+    {
+        // TODO: ログイン中のユーザーからIDを取得する
+        $userId = '1';
+        $recipeId = $request->recipe_id;
+        $recipeIngredients = [];
+        for ($i=0; $i<count($request->ingredient_category); ++$i) {
+            $recipeIngredients[] = [
+                'category' => $request->ingredient_category[$i],
+                'name' => $request->ingredient_name[$i],
+                'amount' => $request->ingredient_amount[$i],
+            ];
+        }
+
+        $recipeUpdateRequest = new recipeUpdateRequest(
+            $recipeId,
+            $userId,
+            $request->recipe_title,
+            $request->recipe_url,
+            $recipeIngredients
+        );
+        $recipeResponse = $recipeUpdateInteractor->handle($recipeUpdateRequest);
+        return redirect()->route('recipe_detail', $recipeId);
     }
 
     public function detail(Request $request, RecipeDetailUsecaseInterface $recipeDetailInteractor)
@@ -56,14 +104,12 @@ class RecipeController extends Controller
         // TODO: ログイン中のユーザーからIDを取得する
         $userId = '1';
 
-        // ログイン中のユーザーが見れるレシピかどうか判定はどこでする？
+        // TODO: ログイン中のユーザーが見れるレシピかどうか判定はどこでする？
 
-        // TODO: リクエスト中からレシピIDを取得
-
-        $recipeId = "1";
+        $recipeId = $request->recipeId;
         $recipeDetailRequest = new recipeDetailRequest($userId, $recipeId);
         $recipeDetailResponse = $recipeDetailInteractor->handle($recipeDetailRequest);
-        $viewModel = new RecipeDetailViewModel($recipeDetailResponse->getRecipeCollection());
+        $viewModel = new RecipeDetailViewModel($recipeDetailResponse->getRecipeData());
         return view('recipe_detail', compact(['viewModel']));
     }
 }
