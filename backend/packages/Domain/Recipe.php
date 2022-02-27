@@ -10,7 +10,7 @@ class Recipe
     private int $userId;
     private string $recipeUrl;
     private string|null $recipeTitle;
-    private string|null $recipeIngredientsText;
+    private array|null $recipeIngredients;
     private string|null $createdAt;
     private string|null $updatedAt;
 
@@ -19,7 +19,7 @@ class Recipe
         int $userId,
         string $recipeUrl,
         string|null $recipeTitle,
-        string|null $recipeIngredientsText,
+        array|null $recipeIngredients,
         string|null $createdAt,
         string|null $updatedAt
     ) {
@@ -27,7 +27,7 @@ class Recipe
         $this->userId = $userId;
         $this->recipeUrl = $recipeUrl;
         $this->recipeTitle = $recipeTitle;
-        $this->recipeIngredientsText = $recipeIngredientsText;
+        $this->recipeIngredients = $recipeIngredients;
         $this->createdAt = $createdAt;
         $this->updatedAt = $updatedAt;
     }
@@ -52,9 +52,9 @@ class Recipe
         return $this->recipeTitle;
     }
 
-    public function getRecipeIngredientsText(): string|null
+    public function getRecipeIngredients(): array|null
     {
-        return $this->recipeIngredientsText;
+        return $this->recipeIngredients;
     }
 
     public function getCreatedAt(): string|null

@@ -7,13 +7,15 @@
         <meta name="keywords" content="">
         <title>ホームページサンプル株式会社 | ホームページサンプル株式会社では最新技術と自然との調和を目指します。</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="screen">
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         @livewireStyles
     </head>
     <body>
         <header id="header">
             <div class="header-inner inner">
               <div class="logo">
-                <a href="{{ route('recipes') }}"><img src="images/cookRecipeIcon.png" /></a>
+                <a href="{{ route('recipes') }}"><img src="{{ asset('images/cookRecipeIcon.png') }}" alt="logo"/></a>
               </div>
               <nav class="header-nav">
                 <div class="header-nav-item">
@@ -22,14 +24,15 @@
                     <button class="form2-button"><i class="fa fa-search"></i></button>
                   </form> --}}
                 </div>
-                {{-- <div class="header-nav-item">
-                  <img src="https://placehold.jp/50x50.png" class="header-avatar" />
-                </div> --}}
+                <div class="header-nav-item">
+                    <a href="{{ route('recipe_create') }}"><img src="{{ asset('images/pencilIcon.png') }}" alt="create_logo" class="header-avatar"/></a>
+                </div>
               </nav>
             </div>
           </header>
 
         @yield('content')
+        @yield('scripts')
 
         <!-- フッター -->
         <div id="footer">
