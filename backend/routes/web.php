@@ -20,6 +20,14 @@ Route::get('/', function () {
 
 Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes');
 
-// レシピ作成・更新
+// レシピ作成・編集・更新
 Route::get('/recipe/create', [RecipeController::class, 'create'])->name('recipe_create');
-Route::post('/recipe/create', [RecipeController::class, 'update'])->name('recipe_create_update');
+Route::get('/recipe/edit/{recipeId}', [RecipeController::class, 'edit'])->name('recipe_edit');
+Route::post('/recipe/insert', [RecipeController::class, 'insert'])->name('recipe_create_update');
+Route::post('/recipe/update', [RecipeController::class, 'update'])->name('recipe_update');
+
+// レシピ詳細
+Route::get('/recipe/{recipeId}', [RecipeController::class, 'detail'])->name('recipe_detail');
+
+// レシピ削除
+Route::post('/recipe/delete/{recipeId}', [RecipeController::class, 'delete'])->name('recipe_delete');
