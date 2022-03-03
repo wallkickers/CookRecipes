@@ -24,7 +24,7 @@
             <ol id="Ingredient-List">
                 @foreach ($viewModel->getRecipeData()->getRecipeIngredients() as $key => $recipeIngredients)
                 <li id="ingredientItem_{{$key}}" class="ingredientItem">
-                    <select name="ingredient_category[]" class="editIngredientCategory">
+                    <select name="ingredient_category[]" class="editIngredient editIngredientCategory">
                         <option value=''>カテゴリー</option>
                         @foreach($viewModel->getIngredientCategories() as $ingredientCategory)
                         <option  value="{{ $ingredientCategory->id }}"
@@ -35,8 +35,8 @@
                         @endforeach
                     </select>
                     <span>
-                        <input name="ingredient_name[]" value="{{ $recipeIngredients->ingredient_name }}" placeholder="材料名" class="editIngredientName" required>
-                        <input name="ingredient_amount[]" value="{{ $recipeIngredients->ingredient_amount }}" placeholder="量" class="editIngredientAmount">
+                        <input name="ingredient_name[]" value="{{ $recipeIngredients->ingredient_name }}" placeholder="材料名" class="editIngredient editIngredientName" required>
+                        <input name="ingredient_amount[]" value="{{ $recipeIngredients->ingredient_amount }}" placeholder="量" class="editIngredient editIngredientAmount">
                     </span>
                     <button type="button" class="Input-Minus" data-index="{{$key}}">-</button>
                 </li>
