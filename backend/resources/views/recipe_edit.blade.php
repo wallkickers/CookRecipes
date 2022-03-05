@@ -38,11 +38,11 @@
                         <input name="ingredient_name[]" value="{{ $recipeIngredients->ingredient_name }}" placeholder="材料名" class="editIngredient editIngredientName" required>
                         <input name="ingredient_amount[]" value="{{ $recipeIngredients->ingredient_amount }}" placeholder="量" class="editIngredient editIngredientAmount">
                     </span>
-                    <button type="button" class="Input-Minus" data-index="{{$key}}">-</button>
+                    <button type="button" class="Input-Minus" data-index="{{$key}}">✖︎</button>
                 </li>
                 @endforeach
             </ol>
-            <button type="button" class="Form-Btn Btn-Small Tomato Input-Plus">+</button>
+            <button type="button" class="Form-Btn Btn-Small Input-Plus">+</button>
         </div>
         <input name="recipe_id" value="{{ $viewModel->getRecipeData()->getId() }}" type="hidden">
         <div class="Form-Btn-Group">
