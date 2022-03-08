@@ -16,16 +16,17 @@
           <textarea
             class="Form-Item-Textarea"
             name="recipe_ingredients"
-            placeholder="例）鶏もも肉1パック(2枚500g)
-            ★醤油大さじ4
-            ★みりん大さじ3
-            ★料理酒大さじ3
-            ★砂糖大さじ1
-            ★しょうがチューブ5〜10cm位
-            ★ニンニクチューブ5〜10cm位"
+            placeholder="例）
+鶏もも肉1パック(1枚200g)
+醤油大さじ1
+みりん大さじ1
+しょうがチューブ5cm
+ニンニクチューブ5cm"
             ></textarea>
         </div>
-        <input type="submit" class="Form-Btn" value="保存する">
+        <div class="Form-Btn-Group">
+            <input type="submit" class="Form-Btn" value="保存する">
+        </div>
     </div>
 </form>
 @endsection

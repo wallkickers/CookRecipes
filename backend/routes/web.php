@@ -14,11 +14,7 @@ use App\Http\Controllers\Web\RecipeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/recipes', [RecipeController::class, 'index'])->name('recipes');
+Route::get('/', [RecipeController::class, 'index'])->name('recipes');
 
 // レシピ作成・編集・更新
 Route::get('/recipe/create', [RecipeController::class, 'create'])->name('recipe_create');

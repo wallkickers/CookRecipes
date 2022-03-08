@@ -1,14 +1,11 @@
 // function
 function appendIngredientOption (index) {
-    console.log(index);
     $.each(ingredientCategoriesObject, function(i, value){
         $('#ingredientItem_' + index + ' select').append($('<option>').html(value.ingredient_category_name).val(value.id));
     });
 }
 
 function removeIngredientOption (index) {
-    console.log(index);
-    console.log($('#ingredientItem_' + index));
     $('#ingredientItem_' + index).remove();
 }
 
@@ -23,17 +20,15 @@ if (typeof(index) === 'undefined') {
 // イベント
 $('.Input-Plus').click(function () {
     var ingredientItem = `
-<li id="ingredientItem_${index}">
-    <div>
-        <select name="ingredient_category[]">
-            <option value=''>カテゴリー</option>
-        </select>
+<li id="ingredientItem_${index}"  class="ingredientItem">
+    <select name="ingredient_category[]" class="editIngredient editIngredientCategory">
+        <option value=''>カテゴリー</option>
+    </select>
     <span>
-        <input name="ingredient_name[]" placeholder="材料名">
-        <input name="ingredient_amount[]" placeholder="量">
+        <input name="ingredient_name[]" placeholder="材料名" class="editIngredient editIngredientName" required>
+        <input name="ingredient_amount[]" placeholder="量" class="editIngredient editIngredientAmount">
     </span>
-</div>
-<button type="button" class="Form-Btn Input-Minus" data-add-index="${index}">-</button>
+<button type="button" class="Input-Minus" data-add-index="${index}">✖︎</button>
 </li>
 `;
     $('#Ingredient-List').append(ingredientItem);

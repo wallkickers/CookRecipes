@@ -80,9 +80,11 @@ class RecipeController extends Controller
         $userId = '1';
         $recipeId = $request->recipe_id;
         $recipeIngredients = [];
-        for ($i=0; $i<count($request->ingredient_category); ++$i) {
+        $ingredientCategory = $request->ingredient_category ?? [];
+
+        for ($i=0; $i<count($ingredientCategory); ++$i) {
             $recipeIngredients[] = [
-                'category' => $request->ingredient_category[$i],
+                'category' => $ingredientCategory[$i],
                 'name' => $request->ingredient_name[$i],
                 'amount' => $request->ingredient_amount[$i],
             ];

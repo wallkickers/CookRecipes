@@ -20,31 +20,29 @@
           <input type="text" class="Form-Item-Input" name="recipe_url" placeholder="例）https://cookrecipe.com/aaaaa" value="{{ $viewModel->getRecipeData()->getrecipeUrl() }}" required>
         </div>
         <div class="Form-Item">
-            <p class="Form-Item-Label isMsg">材料</p>
+            <p class="Form-Item-Label">材料</p>
             <ol id="Ingredient-List">
                 @foreach ($viewModel->getRecipeData()->getRecipeIngredients() as $key => $recipeIngredients)
                 <li id="ingredientItem_{{$key}}" class="ingredientItem">
-                    <div>
-                        <select name="ingredient_category[]">
-                            <option value=''>カテゴリー</option>
-                            @foreach($viewModel->getIngredientCategories() as $ingredientCategory)
-                            <option  value="{{ $ingredientCategory->id }}"
-                                @if($ingredientCategory->id === $recipeIngredients->ingredient_category_id) selected @endif
-                            >
-                            {{ $ingredientCategory->ingredient_category_name }}
-                            </option>
-                            @endforeach
-                        </select>
-                        <span>
-                            <input name="ingredient_name[]" value="{{ $recipeIngredients->ingredient_name }}" placeholder="材料名">
-                            <input name="ingredient_amount[]" value="{{ $recipeIngredients->ingredient_amount }}" placeholder="量">
-                        </span>
-                    </div>
-                    <button type="button" class="Form-Btn Input-Minus" data-index="{{$key}}">-</button>
+                    <select name="ingredient_category[]" class="editIngredient editIngredientCategory">
+                        <option value=''>カテゴリー</option>
+                        @foreach($viewModel->getIngredientCategories() as $ingredientCategory)
+                        <option  value="{{ $ingredientCategory->id }}"
+                            @if($ingredientCategory->id === $recipeIngredients->ingredient_category_id) selected @endif
+                        >
+                        {{ $ingredientCategory->ingredient_category_name }}
+                        </option>
+                        @endforeach
+                    </select>
+                    <span>
+                        <input name="ingredient_name[]" value="{{ $recipeIngredients->ingredient_name }}" placeholder="材料名" class="editIngredient editIngredientName" required>
+                        <input name="ingredient_amount[]" value="{{ $recipeIngredients->ingredient_amount }}" placeholder="量" class="editIngredient editIngredientAmount">
+                    </span>
+                    <button type="button" class="Input-Minus" data-index="{{$key}}">✖︎</button>
                 </li>
                 @endforeach
             </ol>
-            <button type="button" class="Form-Btn Btn-Small Gray Input-Plus">+</button>
+            <button type="button" class="Form-Btn Btn-Small Input-Plus">+</button>
         </div>
         <input name="recipe_id" value="{{ $viewModel->getRecipeData()->getId() }}" type="hidden">
         <div class="Form-Btn-Group">
