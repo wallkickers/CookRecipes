@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace packages\Web\Recepes\RecipeDetail;
 
+use packages\Domain\Recipe;
 use packages\Web\Recepes\Recipe\RecipeRepositoryInterface;
 use packages\Web\Recepes\RecipeDetail\RecipeDetailRequest;
 use packages\Web\Recepes\RecipeDetail\RecipeDetailResponse;
@@ -25,7 +26,18 @@ class RecipeDetailInteractor implements RecipeDetailUsecaseInterface
      */
     public function handle(RecipeDetailRequest $request): RecipeDetailResponse
     {
-        $result = $this->recipeRepository->getRecipe($request->getUserId(), $request->getRecipeId());
-        return new RecipeDetailResponse($result);
+        $recipeData = $this->recipeRepository->getRecipe($request->getUserId(), $request->getRecipeId());
+        $recipeIngredientsCollection = $this->recipeRepository->getRecipeIngredients($request->getRecipeId());
+
+        return new RecipeDetailResponse(
+            new Recipe (
+            $recipeData->id,
+            $recipeData->user_id,
+            $recipeData->recipe_url,
+            $recipeData->recipe_title,
+            $recipeIngredientsCollection->all(),
+            null,
+            null
+        ));
     }
 }
