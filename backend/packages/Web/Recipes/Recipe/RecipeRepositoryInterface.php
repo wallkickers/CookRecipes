@@ -26,5 +26,9 @@ interface RecipeRepositoryInterface
 
     public function getRecipeIngredients(string $recipeId);
 
+    public function getIngredientsFromRecipes(array $recipes);
+
     public function getIngredientCategories();
+
+    public function getRecipeCollection(string $userId);
 }
