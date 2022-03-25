@@ -218,6 +218,24 @@ class RecipeRepository implements RecipeRepositoryInterface
     }
 
     /**
+     * @param array $recipes レシピ
+     * @return Collection レシピに紐づく材料
+     */
+    public function getIngredientsFromRecipes(array $recipes): Collection
+    {
+        return DB::table('recipes')
+            ->join('recipe_ingredients', 'recipes.id', '=', 'recipe_ingredients.recipe_id')
+            ->select(
+                'recipe_ingredients.id',
+                'recipe_ingredients.ingredient_category_id',
+                'recipe_ingredients.ingredient_name',
+                'recipe_ingredients.ingredient_amount'
+            )
+            ->whereIn('recipes.id', $recipes)
+            ->get();
+    }
+
+    /**
      * @return Collection
      */
     public function getIngredientCategories(): Collection
@@ -303,4 +321,34 @@ class RecipeRepository implements RecipeRepositoryInterface
         }
         return $title;
     }
+
+    /**
+     * @param string $userId ユーザーID
+     * @return Collection
+     */
+    public function getRecipeCollection(string $userId): Collection
+    {
+        $recipe = [];
+        $recipeDataCollection = DB::table('recipes')
+            ->select(
+                'id',
+                'user_id',
+                'recipe_url',
+                'recipe_title'
+            )
+            ->where('user_id', $userId)->get();
+        foreach ($recipeDataCollection as $recipeData) {
+            $recipe[] = new Recipe(
+                $recipeData->id,
+                $recipeData->user_id,
+                $recipeData->recipe_url,
+                $recipeData->recipe_title,
+                null,
+                null,
+                null
+            );
+        }
+        return collect($recipe);
+    }
+
 }
