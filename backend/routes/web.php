@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\RecipeController;
+use App\Http\Controllers\Web\ShoppingThingController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,12 @@ Route::get('/recipe/{recipeId}', [RecipeController::class, 'detail'])->name('rec
 
 // レシピ削除
 Route::post('/recipe/delete/{recipeId}', [RecipeController::class, 'delete'])->name('recipe_delete');
+
+// メモ
+Route::prefix('shopping_things')->name('shopping_things.')->group(function(){
+    Route::get('/', [ShoppingThingController::class, 'index'])->name('index');
+    Route::get('/recipe_select', [ShoppingThingController::class, 'recipeSelect'])->name('recipe_select');
+    Route::post('/create_memo', [ShoppingThingController::class, 'createMemo'])->name('create_memo');
+    Route::post('/insert', [ShoppingThingController::class, 'insert'])->name('insert');
+    Route::get('/edit', [ShoppingThingController::class, 'edit'])->name('edit');
+});
