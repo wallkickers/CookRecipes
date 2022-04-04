@@ -26,7 +26,7 @@ class RecipeCreateInteractor implements RecipeCreateUsecaseInterface
     public function handle(RecipeCreateRequest $request): RecipeCreateResponse
     {
         $result = $this->recipeRepository
-            ->insertOrUpdate(
+            ->insert(
                 $request->getUserId(),
                 $request->getRecipeUrl(),
                 $request->getRecipeIngredient()
