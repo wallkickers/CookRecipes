@@ -350,5 +350,4 @@ class RecipeRepository implements RecipeRepositoryInterface
         }
         return collect($recipe);
     }
-
 }
