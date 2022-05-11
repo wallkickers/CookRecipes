@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace packages\Web\Common;
+namespace packages\Web\MasterData;
 
 use DB;
 use Illuminate\Support\Collection;
-use packages\Web\Common\CommonRepositoryInterface;
+use packages\Web\MasterData\MasterDataRepositoryInterface;
 
-class CommonRepository implements CommonRepositoryInterface
+class MasterDataRepository implements MasterDataRepositoryInterface
 {
     /**
      * @return Collection
@@ -19,7 +19,8 @@ class CommonRepository implements CommonRepositoryInterface
 
         // ingredient_category_sortで昇順ソート
         $sortNumbers = [];
-        foreach ($ingredientCategories as $ingredientCategory) {
+        foreach ($ingredientCategories as $ingredientCategory)
+        {
             $sortNumbers[] = $ingredientCategory->ingredient_category_sort;
         }
         $ingredientCategoriesArray = $ingredientCategories->toArray();

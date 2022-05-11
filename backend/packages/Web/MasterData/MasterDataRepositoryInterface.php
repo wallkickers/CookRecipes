@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace packages\Web\Common;
+namespace packages\Web\MasterData;
 
-interface CommonRepositoryInterface
+interface MasterDataRepositoryInterface
 {
     /**
      * @return Collection
