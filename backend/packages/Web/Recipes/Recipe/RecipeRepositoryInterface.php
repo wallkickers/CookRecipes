@@ -10,6 +10,7 @@ interface RecipeRepositoryInterface
 
     public function insert(
         string $userId,
+        string $recipeTitle,
         string $recipeUrl,
         string|null $recipeIngredient
     );
