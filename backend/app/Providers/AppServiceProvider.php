@@ -14,31 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Api
+        // MasterData
         $this->app->bind(
-            \packages\Api\Recepes\Recipe\RecipeUsecaseInterface::class,
-            \packages\Api\Recepes\Recipe\RecipeInteractor::class
-        );
-
-        $this->app->bind(
-            \packages\Api\Recepes\Recipe\RecipeRepositoryInterface::class,
-            \packages\Api\Recepes\Recipe\RecipeRepository::class
-        );
-
-        $this->app->bind(
-            \packages\Api\Recepes\RecipeCreate\RecipeCreateUsecaseInterface::class,
-            \packages\Api\Recepes\RecipeCreate\RecipeCreateInteractor::class
-        );
-
-        $this->app->bind(
-            \packages\Api\Recepes\RecipeDetail\RecipeDetailUsecaseInterface::class,
-            \packages\Api\Recepes\RecipeDetail\RecipeDetailInteractor::class
-        );
-
-        // Common
-        $this->app->bind(
-            \packages\Web\Common\CommonRepositoryInterface::class,
-            \packages\Web\Common\CommonRepository::class
+            \packages\Web\MasterData\MasterDataRepositoryInterface::class,
+            \packages\Web\MasterData\MasterDataRepository::class
         );
 
         // Web
