@@ -10,19 +10,23 @@ class RecipeCreateRequest extends Request
 {
     /**
      * @var string $userId ユーザーID
+     * @var string $recipeTitle レシピタイトル
      * @var string $recipeUrl レシピURL
      * @var string|null $recipeIngredient レシピの材料
      */
     private $userId;
     private $recipeUrl;
+    private $recipeTitle;
     private $recipeIngredient;
 
     public function __construct(
         string $userId,
+        string $recipeTitle,
         string $recipeUrl,
         string|null $recipeIngredient
     ){
         $this->userId = $userId;
+        $this->recipeTitle = $recipeTitle;
         $this->recipeUrl = $recipeUrl;
         $this->recipeIngredient = $recipeIngredient;
     }
@@ -33,6 +37,14 @@ class RecipeCreateRequest extends Request
     public function getUserId(): string
     {
         return $this->userId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRecipeTitle(): string
+    {
+        return $this->recipeTitle;
     }
 
     /**

@@ -61,11 +61,13 @@ class RecipeController extends Controller
         // TODO: ログイン中のユーザーからIDを取得する
         $userId = '1';
 
+        $recipeTitle = $request->recipe_title;
         $recipeUrl = $request->recipe_url;
         $recipeIngredient = $request->recipe_ingredients;
 
         $recipeCreateRequest = new RecipeCreateRequest(
             $userId,
+            $recipeTitle,
             $recipeUrl,
             $recipeIngredient
         );

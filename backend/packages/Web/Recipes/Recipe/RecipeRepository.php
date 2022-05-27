@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace packages\Web\Recepes\Recipe;
 
-use App\Http\Trait\ApiBaseTrait;
 use DB;
 use Illuminate\Support\Collection;
 use packages\Domain\Recipe;
@@ -12,8 +11,6 @@ use packages\Web\Recepes\Recipe\RecipeRepositoryInterface;
 
 class RecipeRepository implements RecipeRepositoryInterface
 {
-    use ApiBaseTrait;
-
     /**
      * @param string $userId ユーザーID
      * @return Collection
@@ -45,12 +42,14 @@ class RecipeRepository implements RecipeRepositoryInterface
 
     /**
      * @param string $userId ユーザーID
+     * @param string $recipeTitle レシピタイトル
      * @param string $recipeUrl レシピURL
      * @param string|null $recipeIngredient レシピの材料
      * @return Recipe
      */
     public function insert(
         string $userId,
+        string $recipeTitle,
         string $recipeUrl,
         string|null $recipeIngredient
     ): Recipe {
@@ -72,7 +71,7 @@ class RecipeRepository implements RecipeRepositoryInterface
             ->insertGetId([
                 'user_id' => $userId,
                 'recipe_url' => $recipeUrl,
-                'recipe_title' => $this->getTitleFromUrl($recipeUrl),
+                'recipe_title' => $recipeTitle,
                 'recipe_ingredients_text' => $recipeIngredient,
             ]);
 
@@ -302,27 +301,6 @@ class RecipeRepository implements RecipeRepositoryInterface
     }
 
     /**
-     * @param string $url 要素に文字列と数値を含む配列
-     * @return string タグ<titile>に設定されている文字列
-     */
-    private function getTitleFromUrl(string $url): string|null
-    {
-        $title = null;
-        $file = file_get_contents(
-            $url,
-            false,
-            null,
-            0,
-            3000
-        );
-        $array = preg_split("/<\/?title>/", $file);
-        if (count($array) > 0) {
-            $title = $array[1];
-        }
-        return $title;
-    }
-
-    /**
      * @param string $userId ユーザーID
      * @return Collection
      */
@@ -350,5 +328,4 @@ class RecipeRepository implements RecipeRepositoryInterface
         }
         return collect($recipe);
     }
-
 }

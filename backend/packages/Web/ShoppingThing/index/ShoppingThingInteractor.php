@@ -8,19 +8,19 @@ use packages\Web\ShoppingThing\ShoppingThingRepositoryInterface;
 use packages\Web\ShoppingThing\index\ShoppingThingRequest;
 use packages\Web\ShoppingThing\index\ShoppingThingResponse;
 use packages\Web\ShoppingThing\index\ShoppingThingUsecaseInterface;
-use packages\Web\Common\CommonRepositoryInterface;
+use packages\Web\MasterData\MasterDataRepositoryInterface;
 
 class ShoppingThingInteractor implements ShoppingThingUsecaseInterface
 {
     protected ShoppingThingRepositoryInterface $shoppingThingRepository;
-    protected CommonRepositoryInterface $commonRepository;
+    protected MasterDataRepositoryInterface $masterDataRepository;
 
     public function __construct(
         ShoppingThingRepositoryInterface $shoppingThingRepository,
-        CommonRepositoryInterface $commonRepository
+        MasterDataRepositoryInterface $masterDataRepository
     ) {
         $this->shoppingThingRepository = $shoppingThingRepository;
-        $this->commonRepository = $commonRepository;
+        $this->masterDataRepository = $masterDataRepository;
     }
 
     /**
@@ -30,7 +30,7 @@ class ShoppingThingInteractor implements ShoppingThingUsecaseInterface
     public function handle(ShoppingThingRequest $request): ShoppingThingResponse
     {
         $shoppingThing = $this->shoppingThingRepository->get($request->getUserId());
-        $ingredientCategories = $this->commonRepository->getIngredientCategories();
+        $ingredientCategories = $this->masterDataRepository->getIngredientCategories();
         return new ShoppingThingResponse(
             $shoppingThing,
             $ingredientCategories

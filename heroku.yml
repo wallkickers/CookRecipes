@@ -1,0 +1,13 @@
+# setup:
+# addons等は使用しないのでコメントアウト
+build:
+  # 作成したいコンテナのDockerfile
+  docker:
+    app: infra/docker/php/Dockerfile
+    web: infra/docker/nginx/Dockerfile
+    db: infra/docker/mysql/Dockerfile
+  # コンテナで使用する環境変数
+# release:
+# リリースの際に実行するタスク
+# run:
+# 実行するプロセスタイプとコマンド

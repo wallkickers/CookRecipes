@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,25 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Api
+        // MasterData
         $this->app->bind(
-            \packages\Api\Recepes\Recipe\RecipeUsecaseInterface::class,
-            \packages\Api\Recepes\Recipe\RecipeInteractor::class
-        );
-
-        $this->app->bind(
-            \packages\Api\Recepes\Recipe\RecipeRepositoryInterface::class,
-            \packages\Api\Recepes\Recipe\RecipeRepository::class
-        );
-
-        $this->app->bind(
-            \packages\Api\Recepes\RecipeCreate\RecipeCreateUsecaseInterface::class,
-            \packages\Api\Recepes\RecipeCreate\RecipeCreateInteractor::class
-        );
-
-        $this->app->bind(
-            \packages\Api\Recepes\RecipeDetail\RecipeDetailUsecaseInterface::class,
-            \packages\Api\Recepes\RecipeDetail\RecipeDetailInteractor::class
+            \packages\Web\MasterData\MasterDataRepositoryInterface::class,
+            \packages\Web\MasterData\MasterDataRepository::class
         );
 
         // Web
@@ -63,6 +49,37 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             \packages\Web\Recepes\RecipeUpdate\RecipeUpdateUsecaseInterface::class,
             \packages\Web\Recepes\RecipeUpdate\RecipeUpdateInteractor::class
+        );
+
+        // shoppingThing
+        $this->app->bind(
+            \packages\Web\ShoppingThing\ShoppingThingRepositoryInterface::class,
+            \packages\Web\ShoppingThing\ShoppingThingRepository::class
+        );
+
+        $this->app->bind(
+            \packages\Web\ShoppingThing\index\ShoppingThingUsecaseInterface::class,
+            \packages\Web\ShoppingThing\index\ShoppingThingInteractor::class
+        );
+
+        $this->app->bind(
+            \packages\Web\ShoppingThing\recipeSelect\ShoppingThingRecipeSelectUsecaseInterface::class,
+            \packages\Web\ShoppingThing\recipeSelect\ShoppingThingRecipeSelectInteractor::class
+        );
+
+        $this->app->bind(
+            \packages\Web\ShoppingThing\createMemo\ShoppingThingCreateMemoUsecaseInterface::class,
+            \packages\Web\ShoppingThing\createMemo\ShoppingThingCreateMemoInteractor::class
+        );
+
+        $this->app->bind(
+            \packages\Web\ShoppingThing\insert\ShoppingThingInsertUsecaseInterface::class,
+            \packages\Web\ShoppingThing\insert\ShoppingThingInsertInteractor::class
+        );
+
+        $this->app->bind(
+            \packages\Web\ShoppingThing\edit\ShoppingThingEditUsecaseInterface::class,
+            \packages\Web\ShoppingThing\edit\ShoppingThingEditInteractor::class
         );
     }
 

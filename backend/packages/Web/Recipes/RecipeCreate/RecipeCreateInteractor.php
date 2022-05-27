@@ -28,6 +28,7 @@ class RecipeCreateInteractor implements RecipeCreateUsecaseInterface
         $result = $this->recipeRepository
             ->insert(
                 $request->getUserId(),
+                $request->getRecipeTitle(),
                 $request->getRecipeUrl(),
                 $request->getRecipeIngredient()
             );
