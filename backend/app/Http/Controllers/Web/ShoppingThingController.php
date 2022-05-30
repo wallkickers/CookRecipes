@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use packages\Web\ShoppingThing\createMemo\ShoppingThingCreateMemoRequest;
 use packages\Web\ShoppingThing\createMemo\ShoppingThingCreateMemoUsecaseInterface;
 use packages\Web\ShoppingThing\createMemo\ShoppingThingCreateMemoViewModel;
@@ -25,9 +26,7 @@ class ShoppingThingController extends Controller
 {
     public function index(Request $request, ShoppingThingUsecaseInterface $shoppingThingInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
-
+        $userId = Auth::user()->id;
         $shoppingThingRequest = new ShoppingThingRequest($userId);
         $shoppingThingResponse = $shoppingThingInteractor->handle($shoppingThingRequest);
         $viewModel = new ShoppingThingViewModel(
@@ -40,9 +39,7 @@ class ShoppingThingController extends Controller
     // レシピ選択画面
     public function recipeSelect(Request $request, ShoppingThingRecipeSelectUsecaseInterface $shoppingThingRecipeSelectInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
-
+        $userId = Auth::user()->id;
         $shoppingThingRecipeSelectRequest = new ShoppingThingRecipeSelectRequest($userId);
         $shoppingThingResponse = $shoppingThingRecipeSelectInteractor->handle($shoppingThingRecipeSelectRequest);
         $viewModel = new ShoppingThingRecipeSelectViewModel($shoppingThingResponse->getRecipeCollection());
@@ -52,9 +49,7 @@ class ShoppingThingController extends Controller
     // メモ作成
     public function createMemo(Request $request, ShoppingThingCreateMemoUsecaseInterface $shoppingThingCreateMemoInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
-
+        $userId = Auth::user()->id;
         $selectedRecipes = $request->selected_recipes ?? [];
         $shoppingThingCreateMemoRequest = new ShoppingThingCreateMemoRequest(
             $userId,
@@ -70,9 +65,7 @@ class ShoppingThingController extends Controller
 
     public function insert(Request $request, ShoppingThingInsertUsecaseInterface $shoppingThingInsertInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
-
+        $userId = Auth::user()->id;
         $ingredients = [];
         $ingredientCategory = $request->ingredient_category ?? [];
 
@@ -94,9 +87,7 @@ class ShoppingThingController extends Controller
 
     public function edit(Request $request, ShoppingThingEditUsecaseInterface $shoppingThingEditInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
-
+        $userId = Auth::user()->id;
         $shoppingThingEditRequest = new ShoppingThingEditRequest($userId);
         $shoppingThingEditResponse = $shoppingThingEditInteractor->handle($shoppingThingEditRequest);
         $viewModel = new ShoppingThingEditViewModel(

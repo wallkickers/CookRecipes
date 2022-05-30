@@ -6,32 +6,18 @@ namespace packages\Web\ShoppingThing;
 
 interface ShoppingThingRepositoryInterface
 {
-    public function get(string $userId);
+    public function get(int $userId);
 
     public function getShoppingThingsIngredients(
-        string $userId
+        int $userId
     );
 
     public function insertShoppingThingsIngredients(
-        string $userId,
+        int $userId,
         array|null $shoppingThingIngredients
     );
 
     public function deleteShoppingThingsIngredients(
-        string $userId
+        int $userId
     );
-
-    // public function update(
-    //     string $ShoppingThingId,
-    //     string $userId,
-    //     string|null $ShoppingThingTitle,
-    //     string $ShoppingThingUrl,
-    //     array|null $ShoppingThingIngredients
-    // );
-
-    // public function getShoppingThing(string $userId, string $ShoppingThingId);
-
-    // public function getShoppingThingIngredients(string $ShoppingThingId);
-
-    // public function getIngredientCategories();
 }

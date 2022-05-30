@@ -12,10 +12,10 @@ use packages\Web\Recepes\Recipe\RecipeRepositoryInterface;
 class RecipeRepository implements RecipeRepositoryInterface
 {
     /**
-     * @param string $userId ユーザーID
+     * @param int $userId ユーザーID
      * @return Collection
      */
-    public function find(string $userId): Collection
+    public function find(int $userId): Collection
     {
         $recipe = [];
         $recipeDataCollection = DB::table('recipes')
@@ -41,14 +41,14 @@ class RecipeRepository implements RecipeRepositoryInterface
     }
 
     /**
-     * @param string $userId ユーザーID
+     * @param int $userId ユーザーID
      * @param string $recipeTitle レシピタイトル
      * @param string $recipeUrl レシピURL
      * @param string|null $recipeIngredient レシピの材料
      * @return Recipe
      */
     public function insert(
-        string $userId,
+        int $userId,
         string $recipeTitle,
         string $recipeUrl,
         string|null $recipeIngredient
@@ -111,7 +111,7 @@ class RecipeRepository implements RecipeRepositoryInterface
     }
 
     /**
-     * @var string $userId ユーザーID
+     * @var int $userId ユーザーID
      * @var string|null $recipeTitle レシピタイトル
      * @var string $recipeUrl レシピURL
      * @var array|null $recipeIngredients レシピの材料
@@ -119,7 +119,7 @@ class RecipeRepository implements RecipeRepositoryInterface
      */
     public function update(
         string $recipeId,
-        string $userId,
+        int $userId,
         string|null $recipeTitle,
         string $recipeUrl,
         array|null $recipeIngredients
@@ -180,11 +180,11 @@ class RecipeRepository implements RecipeRepositoryInterface
     }
 
     /**
-     * @param string $userId ユーザーID
+     * @param int $userId ユーザーID
      * @param string $recipeId レシピID
      * @return Collection
      */
-    public function getRecipe(string $userId, string $recipeId)
+    public function getRecipe(int $userId, string $recipeId)
     {
         return DB::table('recipes')
             ->select(
@@ -301,10 +301,10 @@ class RecipeRepository implements RecipeRepositoryInterface
     }
 
     /**
-     * @param string $userId ユーザーID
+     * @param int $userId ユーザーID
      * @return Collection
      */
-    public function getRecipeCollection(string $userId): Collection
+    public function getRecipeCollection(int $userId): Collection
     {
         $recipe = [];
         $recipeDataCollection = DB::table('recipes')

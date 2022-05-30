@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class RecipeCreateRequest extends Request
 {
     /**
-     * @var string $userId ユーザーID
+     * @var int $userId ユーザーID
      * @var string $recipeTitle レシピタイトル
      * @var string $recipeUrl レシピURL
      * @var string|null $recipeIngredient レシピの材料
@@ -20,7 +20,7 @@ class RecipeCreateRequest extends Request
     private $recipeIngredient;
 
     public function __construct(
-        string $userId,
+        int $userId,
         string $recipeTitle,
         string $recipeUrl,
         string|null $recipeIngredient
@@ -32,9 +32,9 @@ class RecipeCreateRequest extends Request
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getUserId(): string
+    public function getUserId(): int
     {
         return $this->userId;
     }

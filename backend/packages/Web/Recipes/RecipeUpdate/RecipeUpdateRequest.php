@@ -10,7 +10,7 @@ class RecipeUpdateRequest extends Request
 {
     /**
      * @var string $recipeId レシピID
-     * @var string $userId ユーザーID
+     * @var int $userId ユーザーID
      * @var string|null $recipeTitle レシピタイトル
      * @var string $recipeUrl レシピURL
      * @var array|null $recipeIngredients レシピの材料
@@ -23,7 +23,7 @@ class RecipeUpdateRequest extends Request
 
     public function __construct(
         string $recipeId,
-        string $userId,
+        int $userId,
         string|null $recipeTitle,
         string $recipeUrl,
         array|null $recipeIngredients
@@ -44,9 +44,9 @@ class RecipeUpdateRequest extends Request
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getUserId(): string
+    public function getUserId(): int
     {
         return $this->userId;
     }
