@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 class RecipeEditRequest extends Request
 {
     /**
-     * @var string $userId ユーザーID
+     * @var int $userId ユーザーID
      * @var string $recipeId レシピID
      */
     private $userId;
     private $recipeId;
 
     public function __construct(
-        string $userId,
+        int $userId,
         string $recipeId,
     ) {
         $this->userId = $userId;
@@ -24,9 +24,9 @@ class RecipeEditRequest extends Request
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getUserId(): string
+    public function getUserId(): int
     {
         return $this->userId;
     }

@@ -9,20 +9,20 @@ use Illuminate\Http\Request;
 class RecipeRequest extends Request
 {
     /**
-     * @var string
+     * @var int
      */
     private $userId;
 
     public function __construct(
-        string $userId
+        int $userId
     ){
         $this->userId = $userId;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getUserId(): string
+    public function getUserId(): int
     {
         return $this->userId;
     }
