@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use packages\Web\Recepes\Recipe\RecipeRequest;
 use packages\Web\Recepes\Recipe\RecipeUsecaseInterface;
 use packages\Web\Recepes\Recipe\RecipeViewModel;
@@ -25,8 +26,7 @@ class RecipeController extends Controller
 {
     public function index(Request $request, RecipeUsecaseInterface $recipeInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
+        $userId = Auth::user()->id;
 
         $recipeRequest = new RecipeRequest($userId);
         $recipeResponse = $recipeInteractor->handle($recipeRequest);
@@ -41,8 +41,7 @@ class RecipeController extends Controller
 
     public function edit(Request $request, RecipeEditUsecaseInterface $recipeEditInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
+        $userId = Auth::user()->id;
 
         // TODO: ログイン中のユーザーが見れるレシピかどうか判定はどこでする？
 
@@ -58,8 +57,7 @@ class RecipeController extends Controller
 
     public function insert(Request $request, RecipeCreateUsecaseInterface $recipeCreateInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
+        $userId = Auth::user()->id;
 
         $recipeTitle = $request->recipe_title;
         $recipeUrl = $request->recipe_url;
@@ -78,8 +76,7 @@ class RecipeController extends Controller
 
     public function update(Request $request, RecipeUpdateUsecaseInterface $recipeUpdateInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
+        $userId = Auth::user()->id;
         $recipeId = $request->recipe_id;
         $recipeIngredients = [];
         $ingredientCategory = $request->ingredient_category ?? [];
@@ -105,8 +102,7 @@ class RecipeController extends Controller
 
     public function detail(Request $request, RecipeDetailUsecaseInterface $recipeDetailInteractor)
     {
-        // TODO: ログイン中のユーザーからIDを取得する
-        $userId = '1';
+        $userId = Auth::user()->id;
 
         // TODO: ログイン中のユーザーが見れるレシピかどうか判定はどこでする？
 
