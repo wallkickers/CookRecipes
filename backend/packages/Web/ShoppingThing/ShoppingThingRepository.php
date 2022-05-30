@@ -15,10 +15,10 @@ use PhpParser\ErrorHandler\Collecting;
 class ShoppingThingRepository implements ShoppingThingRepositoryInterface
 {
     /**
-     * @param string $userId ユーザーID
+     * @param int $userId ユーザーID
      * @return Collection
      */
-    public function get(string $userId): Collection
+    public function get(int $userId): Collection
     {
         $shoppingThing = [];
         $shoppingThingDataCollection = DB::table('shopping_things')
@@ -56,7 +56,7 @@ class ShoppingThingRepository implements ShoppingThingRepositoryInterface
      * @param array $recipes レシピ
      * @return Collection レシピに紐づく材料
      */
-    public function getShoppingThingsIngredients(string $userId): Collection
+    public function getShoppingThingsIngredients(int $userId): Collection
     {
         return DB::table('shopping_things')
             ->select(
@@ -69,10 +69,10 @@ class ShoppingThingRepository implements ShoppingThingRepositoryInterface
     }
 
     /**
-     * @param string $userId ユーザーID
+     * @param int $userId ユーザーID
      * @return
      */
-    public function deleteShoppingThingsIngredients(string $userId)
+    public function deleteShoppingThingsIngredients(int $userId)
     {
         $a = DB::table('shopping_things')
         ->where('user_id', $userId)
@@ -80,11 +80,11 @@ class ShoppingThingRepository implements ShoppingThingRepositoryInterface
     }
 
     /**
-     * @param string $userId ユーザーID
+     * @param int $userId ユーザーID
      * @param array|null $shoppingThingIngredients 買い物材料
      * @return
      */
-    public function insertShoppingThingsIngredients(string $userId, array|null $shoppingThingIngredients)
+    public function insertShoppingThingsIngredients(int $userId, array|null $shoppingThingIngredients)
     {
         if (is_array($shoppingThingIngredients) && count($shoppingThingIngredients) > 0) {
             foreach ($shoppingThingIngredients as $value) {

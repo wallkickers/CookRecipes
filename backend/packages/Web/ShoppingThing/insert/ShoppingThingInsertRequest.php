@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 class ShoppingThingInsertRequest extends Request
 {
     /**
-     * @var string
+     * @var int
      * @var array|null $ingredients 材料
      */
     private $userId;
     private $ingredients;
 
     public function __construct(
-        string $userId,
+        int $userId,
         array $ingredients
     ){
         $this->userId = $userId;
@@ -24,9 +24,9 @@ class ShoppingThingInsertRequest extends Request
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getUserId(): string
+    public function getUserId(): int
     {
         return $this->userId;
     }

@@ -8,19 +8,19 @@ use packages\Web\ShoppingThing\ShoppingThingRepositoryInterface;
 use packages\Web\ShoppingThing\insert\ShoppingThingInsertRequest;
 use packages\Web\ShoppingThing\insert\ShoppingThingInsertResponse;
 use packages\Web\ShoppingThing\insert\ShoppingThingInsertUsecaseInterface;
-use packages\Web\Common\CommonRepositoryInterface;
+use packages\Web\MasterData\MasterDataRepositoryInterface;
 
 class ShoppingThingInsertInteractor implements ShoppingThingInsertUsecaseInterface
 {
     protected ShoppingThingRepositoryInterface $shoppingThingRepository;
-    protected CommonRepositoryInterface $commonRepository;
+    protected MasterDataRepositoryInterface $masterDataRepository;
 
     public function __construct(
         ShoppingThingRepositoryInterface $shoppingThingRepository,
-        CommonRepositoryInterface $commonRepository
+        MasterDataRepositoryInterface $masterDataRepository
     ) {
         $this->shoppingThingRepository = $shoppingThingRepository;
-        $this->commonRepository = $commonRepository;
+        $this->masterDataRepository = $masterDataRepository;
     }
 
     /**
