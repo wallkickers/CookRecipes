@@ -81,6 +81,17 @@ class AppServiceProvider extends ServiceProvider
             \packages\Web\ShoppingThing\edit\ShoppingThingEditUsecaseInterface::class,
             \packages\Web\ShoppingThing\edit\ShoppingThingEditInteractor::class
         );
+
+        // Auth
+        $this->app->bind(
+            \packages\Web\Auth\AuthUsecaseInterface::class,
+            \packages\Web\Auth\AuthInteractor::class
+        );
+        $this->app->bind(
+            \packages\Web\Auth\AuthRepositoryInterface::class,
+            \packages\Web\Auth\AuthRepository::class
+        );
+
     }
 
     /**
@@ -90,6 +101,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
     }
 }
