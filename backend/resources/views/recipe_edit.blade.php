@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.login_app')
 
 <script>
     const ingredientCategoriesObject = @json($viewModel->getIngredientCategories());
