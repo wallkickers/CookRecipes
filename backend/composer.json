@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "bensampo/laravel-enum": "^5.1",
+        "fakerphp/faker": "^1.19",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^9.0",
@@ -16,7 +17,6 @@
         "livewire/livewire": "^2.8"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.9.1",
         "itsgoingd/clockwork": "^5.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
